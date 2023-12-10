@@ -1,11 +1,30 @@
-{% extends "base.html" %} {% block content %} {% load crispy_forms_tags %}
-
-<div class="container py-5">
-  <h3>Form fields</h3>
-  <form method="post">
-    {% csrf_token %} {{form|crispy}}
-    <button class="btn btn-primary">Submit</button>
-  </form>
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1>this is model's showing page</h1>
+  {% if data %} {% for i in data %}
+  <div>
+    <p>{{i.auto_field}}</p>
+    <p>{{i.big_integer_field}}</p>
+    <p>{{i.binary_field}}</p>
+    <p>{{i.boolean_field}}</p>
+    <p>{{i.char_field}}</p>
+    <p>{{i.date_time_field}}</p>
+    <p>{{i.decimal_field}}</p>
+    <p>{{i.duration_field}}</p>
+    <p>{{i.email_field}}</p>
+    <p>{{i.file_field}}</p>
+    <p>{{i.float_field}}</p>
+    <p><img src="{{i.image_field}}" alt=""></p>
+    <p>{{i.integer_field}}</p>
+    <p>{{i.positive_big_integer_field}}</p>
+    <p>{{i.slug_field}}</p>
+    <p>{{i.text_field}}</p>
+    <p>{{i.time_field}}</p>
+    <p>{{i.url_field}}</p>
+  </div>
+  {%endfor%} {% else %}
+  <h3>No data available to show</h3>
+  {% endif%}
 </div>
 
-{% endblock %}
+{% endblock content %}

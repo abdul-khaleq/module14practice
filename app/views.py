@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from . import models
+from . models import MyModel, Student
 from . forms import ExampleForm
 # Create your views here.
 def home(request):
-    students = models.Student.objects.all()
+    students = Student.objects.all()
     return render(request, 'home.html', {'data': students})
 
-def model(request):
-    data = models.MyModel.objects.all()
-    return render(request, 'model.html', {'data':data})
-
-def contact(request):
+def form(request):
     form = ExampleForm()
-    return render(request, 'contact.html', {'form':form})
+    return render(request, 'form.html', {'form':form})
+
+def model(request):
+    data = MyModel.objects.all()
+    return render(request, 'model.html', {'data':data})
